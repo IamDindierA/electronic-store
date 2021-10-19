@@ -38,3 +38,9 @@
         </table>
     </form>
 @endsection
+<!-- Agregar formato a esto con js o css -->
+@if(count($errors)>0)
+    @foreach($errors->all() as $error)
+    {{$error}}
+    @endforeach
+@endif

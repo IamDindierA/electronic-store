@@ -41,6 +41,9 @@ class ProductosController extends Controller
      */
     public function store(Request $request)
     {
+        //vista ruta create insertar registros
+
+        $this->validate($request,['NombreArticulo'=>'required','Precio'=>'required','Descripcion'=>'required']);//validacion de campo con required
         //Crear una instancia o variable del modelo Producto, (Usando programacion orientada a objetos)
         $producto = new Producto;
         //se modifica la propiedad de la instancia, el la columna del tabla
@@ -61,7 +64,10 @@ class ProductosController extends Controller
      */
     public function show($id)
     {
-        //
+        //findOrFail() metodo de los modelos de laravel, usado en los controladores
+        //permite recuperar un registro de un modelo a partir de su id si comprobar que existe
+        $producto=Producto::findOrFail($id);
+        return view("productos.show",compact("producto"));
     }
 
     /**
@@ -75,7 +81,7 @@ class ProductosController extends Controller
         //findOrFail() metodo de los modelos de laravel, usado en los controladores
         //permite recuperar un registro de un modelo a partir de su id si comprobar que existe
         $producto=Producto::findOrFail($id);
-        return view("productos.show",compact("productos"));
+        return view("productos.edit",compact("producto"));
     }
 
     /**
@@ -87,7 +93,10 @@ class ProductosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //print_r() o var_dump(), o quizás mejor dd() que es una función específica de Laravel que muestra el contenido de una variable
+        $producto=Producto::findOrFail($id);
+        $producto->update($request->all());//el objeto request recupera todos los datos enviados por la solicitud en forma de array
+        return redirect("/productos");
     }
 
     /**
@@ -99,5 +108,8 @@ class ProductosController extends Controller
     public function destroy($id)
     {
         //
+        $producto=Producto::findOrFail($id);//obtener el articulo por su id
+        $producto->delete();
+        return redirect("/productos");//redirige al index
     }
 }
