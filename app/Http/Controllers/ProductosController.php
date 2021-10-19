@@ -15,8 +15,11 @@ class ProductosController extends Controller
      */
     public function index()
     {
-        //
-        return "Estas en la pagina";
+        //la variable pruductos es igual a llamar a la metodo estaico
+        $productos=Producto::all();
+        //la funcion compact crea un array que contiene variables y sus valores
+        //all() trae todos los datos de la tabal productos
+        return view("productos.index",compact("productos"));
     }
 
     /**
@@ -69,7 +72,10 @@ class ProductosController extends Controller
      */
     public function edit($id)
     {
-        //
+        //findOrFail() metodo de los modelos de laravel, usado en los controladores
+        //permite recuperar un registro de un modelo a partir de su id si comprobar que existe
+        $producto=Producto::findOrFail($id);
+        return view("productos.show",compact("productos"));
     }
 
     /**
