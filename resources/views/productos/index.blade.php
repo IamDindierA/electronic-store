@@ -12,6 +12,7 @@
             <td>Fecha</td>
             <td>Descripcion</td>
             <td>CantidadD</td>
+            {{-- <td> imagen</td>  --}}
         </tr>
         @foreach($productos as $producto)
         <tr>
@@ -21,7 +22,9 @@
             <td>{{$producto->Fecha}}</td>
             <td>{{$producto->Descripcion}}</td>
             <td>{{$producto->CantidadD}}</td>
+            {{--<td><img src="imagenes/{{$producto->ruta}}"></td>--}}
         </tr>
         @endforeach
     </table>
+    {{-- agregar boton para direccionar create --}}
 @endsection

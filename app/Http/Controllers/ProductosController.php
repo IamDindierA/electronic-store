@@ -44,16 +44,26 @@ class ProductosController extends Controller
         //vista ruta create insertar registros
 
         $this->validate($request,['NombreArticulo'=>'required','Precio'=>'required','Descripcion'=>'required']);//validacion de campo con required
+
         //Crear una instancia o variable del modelo Producto, (Usando programacion orientada a objetos)
+        //se modifica la propiedad de la instancia, el la columna del tabla, request recibe los datos del formulario
+        /*
         $producto = new Producto;
-        //se modifica la propiedad de la instancia, el la columna del tabla
         $producto->NombreArticulo=$request->NombreArticulo;
         $producto->Seccion=$request->Seccion;
         $producto->Precio=$request->Precio;
         $producto->Fecha=$request->Fecha;
         $producto->Descripcion=$request->Descripcion;
         $producto->CantidadD=$request->CantidadD;
-        $producto->save();
+        $producto->save(); */
+
+        $entrada=$request->all();//obtiener todos los datos de la peticion
+        if($archivo = $request->file('file')){//es como se llama el input file
+            $nombre=$archivo->getClientOriginalName();//nombre de la imagen seleccionada
+            $archivo->move('imagenes',$nombre);//mueve el archivo a la carpeta imagenes, lo crea automaticamente.
+            $entrada['ruta']=$nombre;//la columna llamado ruta debe ser igual a lo almacenado a la variable nombre
+        }
+        Producto::create($entrada);//modelo mas metodo
     }
 
     /**

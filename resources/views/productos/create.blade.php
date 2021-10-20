@@ -4,7 +4,8 @@
 @endsection
 @section("Body")
 {{-- el valor de la propiedad name de corresponder a la columna de la tabla --}}
-    <form method="post" action="{{url('/productos')}}">
+<!-- se requiere en el form de enctype="multipart/form-data" para enviar archivos -->
+    <form method="post" action="{{url('/productos')}}" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>Nombre: </td>
@@ -29,6 +30,10 @@
             <tr>
                 <td>Cantidad: </td>
                 <td><input type="text" name="CantidadD"></td>
+            </tr>
+            <tr>
+                <td>imagen: </td>
+                <td><input type="file" name="file"></td>
             </tr>
         @csrf
         <tr>
