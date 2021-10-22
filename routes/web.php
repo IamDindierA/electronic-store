@@ -22,3 +22,6 @@ Route::resource('productos', ProductosController::class);
 /*
 Route::get('/inicio', [ProductosController::class, 'index']);
 Route::get('/crear', [ProductosController::class, 'create']);*/
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
