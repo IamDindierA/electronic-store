@@ -25,9 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {   //Agregue esta linea 22/10 fue lo ultimo
+        /*
         if(Auth::user()->role_id  == 2){
             return redirect('productos');
-        }//
+        }*/
         
         return view('home');
     }

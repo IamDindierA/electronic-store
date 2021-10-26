@@ -13,6 +13,12 @@ class ProductosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //contructor para inicializar llamando al middleware admi.php
+    public function __construct()
+    {
+        $this->middleware("administrador");
+    }
     public function index()
     {
         //la variable pruductos es igual a llamar a la metodo estaico

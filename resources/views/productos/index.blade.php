@@ -1,8 +1,8 @@
-@extends("../layouts.plantilla")
+<!--@extends("../layouts.plantilla")-->
+@extends("layouts.plantillaAd")
 
-@section("Header")
-@endsection
-@section("Body")
+
+@section("main")
 {{-- Leer productos --}}
     <table>
         <tr>

@@ -1,5 +1,6 @@
 @extends("../layouts.plantilla")
 
+
 @section("Header")
 @endsection
 @section("Body")

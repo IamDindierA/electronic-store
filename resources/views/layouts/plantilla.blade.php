@@ -10,6 +10,7 @@
     <!--Bloque de cabecera -->
     <div class="Header">
         @yield("Header")
+        
     </div>
     <!--Bloque de cuerpo -->
     <div class="Body">

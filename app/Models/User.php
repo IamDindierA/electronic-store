@@ -42,15 +42,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /*
     public function role(){
         //inverso a la relacion hasone uno a uno
         return $this->belongsTo(Role::class);
     }
-
-    public function esAdmi(){
+    //se deefine la funcion para hacer una consulta, y ver si este usuario 
+    //en la tabla role tiene asignado el rol de administrador
+    public function esAdmin(){
         if($this->role()->nombre_rol=='administrador'){
             return true;
         }
         return false;
     }
+    */
 }
